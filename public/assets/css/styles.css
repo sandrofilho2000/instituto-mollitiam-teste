@@ -1,0 +1,14 @@
+.bg-custom {
+    background-color: #022d43;
+  }
+
+
+  .btn-custom{
+    background: linear-gradient(165deg, #F8B303 40%, #F58300 100%);
+    color: #012F46;
+  }
+
+
+  .navbar-collapse{
+    flex-grow: unset;
+  }
