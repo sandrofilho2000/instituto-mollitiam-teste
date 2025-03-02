@@ -25,8 +25,8 @@ class Database extends Config
      * @var array<string, mixed>
      */
     public $default = [
-        'DSN'      => 'postgresql://neondb_owner:npg_HvQfVCzjdP74@ep-fancy-lab-a5ibdra3.us-east-2.aws.neon.tech/neondb?sslmode=require',
-        'hostname' => 'ep-fancy-lab-a5ibdra3.us-east-2.aws.neon.tech',
+        'DSN'      => '',
+        'hostname' => 'ep-fancy-lab-a5ibdra3-pooler.us-east-2.aws.neon.tech',
         'username' => 'neondb_owner',
         'password' => 'npg_HvQfVCzjdP74',
         'database' => 'neondb',
@@ -34,6 +34,8 @@ class Database extends Config
         'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'cacheOn' => false,
+        'cacheDir' => '',
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',
         'swapPre'  => '',
@@ -42,13 +44,9 @@ class Database extends Config
         'strictOn' => false,
         'failover' => [],
         'port'     => 5432,
-        'ssl'      => [
-            'verify' => true,
-            'ca'     => '', // Caminho para o certificado CA, se necessário
-            'capath' => '',
-            'cipher' => '',
-            'key'    => '',
-            'cert'   => '',
+        'ssl_mode' => 'require', // Configura o SSL
+        'connect_options' => [
+            'options' => 'endpoint=ep-fancy-lab-a5ibdra3', // Adiciona o endpoint ID
         ],
     ];
 

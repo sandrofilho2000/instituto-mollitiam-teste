@@ -8,16 +8,25 @@ class Home extends BaseController
 {
     public function index()
     {
-        // Carregar o modelo
-        $alunoModel = new Aluno_model();
-        
-        // Obter todos os alunos
-        $data['alunos'] = $alunoModel->get_all();
 
-        // Passar os dados para a view
-        echo view('templates/header'); // Inclui o cabeçalho
-        echo view('home', $data); // Inclui o conteúdo da página, passando os dados
-        echo view('templates/scripts'); // Inclui os scripts
-        echo view('templates/footer'); // Inclui o rodapé
+        $alunoModel = new Aluno_model();
+        $data['alunos'] = $alunoModel->get_all();
+        
+        echo view('templates/header'); 
+        echo view('home', $data); 
+        echo view('templates/scripts');
+        echo view('templates/footer'); 
+    }
+    
+    public function getAlunos()
+    {
+        $alunoModel = new Aluno_model();
+        $alunos = $alunoModel->findAll();
+    
+        // Retorna JSON corretamente
+        return $this->response
+                    ->setStatusCode(200)
+                    ->setContentType('application/json')
+                    ->setJSON($alunos);
     }
 }

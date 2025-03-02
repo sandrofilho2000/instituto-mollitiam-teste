@@ -3,12 +3,33 @@
   }
 
 
-  .btn-custom{
-    background: linear-gradient(165deg, #F8B303 40%, #F58300 100%);
-    color: #012F46;
-  }
+.btn-custom{
+  background: linear-gradient(165deg, #F8B303 40%, #F58300 100%);
+  color: #012F46;
+}
 
 
-  .navbar-collapse{
-    flex-grow: unset;
-  }
+.navbar-collapse{
+  flex-grow: unset;
+}
+
+#tb-lista{
+  width: 100% !important;
+}
+
+#tb-lista_filter  {
+  display: flex !important;
+  width: 100% !important;
+}
+
+#overlay{
+  display: none;
+  position: fixed;
+  background: #000000c2;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
