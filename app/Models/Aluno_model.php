@@ -7,7 +7,7 @@ class Aluno_model extends Model
 {
     protected $table = 'alunos';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nome']; 
+    protected $allowedFields = ['id', 'matricula', 'nome'];
 
     public function __construct()
     {
@@ -17,6 +17,11 @@ class Aluno_model extends Model
     public function get_all()
     {
         return $this->findAll(); 
+    }
+
+    public function get_latest_aluno()
+    {
+        return $this->orderBy('id', 'DESC')->first();
     }
 
     public function get_by_id($id)

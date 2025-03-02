@@ -5,6 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
-$routes->get('home/getAlunos', 'Home::getAlunos');
+$routes->get('/', 'Alunos::index');
+$routes->get('alunos/getAlunos', 'Alunos::getAlunos');
+$routes->post('alunos/addAluno', 'Alunos::addAluno');
 $routes->add('(:any)', 'DynamicController::index/$1');
