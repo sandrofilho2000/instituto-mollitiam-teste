@@ -51,3 +51,7 @@ body.loading input[type=submit]{
     cursor: not-allowed;
     pointer-events: none;
 }
+
+ul li{
+  list-style-type: none;
+}

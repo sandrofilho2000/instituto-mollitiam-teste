@@ -1,38 +1,38 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Disciplina_model extends CI_Model {
+namespace App\Models;
 
-    // Nome da tabela
+use CodeIgniter\Model;
+
+class Disciplina_Model extends Model
+{
     protected $table = 'disciplinas';
-
-    public function __construct() {
-        parent::__construct();
-    }
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['nome']; // 'id' não é necessário aqui
 
     // Função para obter todas as disciplinas
-    public function get_all() {
-        return $this->db->get($this->table)->result();
+    public function get_all()
+    {
+        return $this->findAll(); 
     }
 
-    // Função para obter uma disciplina pelo ID
-    public function get_by_id($id) {
-        return $this->db->get_where($this->table, ['id' => $id])->row();
+    public function get_by_id($id)
+    {
+        return $this->find($id); 
     }
 
-    // Função para inserir uma nova disciplina
-    public function insert($data) {
-        return $this->db->insert($this->table, $data);
+    public function insert_data($data)
+    {
+        return $this->insert($data); 
     }
 
-    // Função para atualizar dados de uma disciplina
-    public function update($id, $data) {
-        return $this->db->update($this->table, $data, ['id' => $id]);
+    public function update_data($id, $data)
+    {
+        return $this->update($id, $data);
     }
 
-    // Função para excluir uma disciplina
-    public function delete($id) {
-        return $this->db->delete($this->table, ['id' => $id]);
+    public function delete_data($id)
+    {
+        return $this->delete($id); 
     }
 }
-?>

@@ -1,9 +1,9 @@
-<!-- alunos.php -->
+<!-- disciplinas.php -->
 <div class="container">
     <div class="d-flex justify-content-between align-items-center my-4">
-        <h2>Lista de Alunos</h2>
-        <button id="add-aluno" class="btn btn-success">
-            Cadastrar Aluno
+        <h2>Lista de Disciplinas</h2>
+        <button id="add-disciplina" class="btn btn-success">
+            Cadastrar Disciplina
         </button>
     </div>
     <div class="table-responsive">
@@ -11,8 +11,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Aluno</th>
-                    <th>Matrícula</th>
+                    <th>Disciplina</th>
                     <th class="text-end">
                         Ações
                     </th>
@@ -26,21 +25,21 @@
 </div>
 
 <div class="overlay" id="overlay">
-    <div class="modal delete-aluno-modal" tabindex="-1" role="dialog">
+    <div class="modal delete-disciplina-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deletar Aluno(a)</h5>
-                <button type="button" class="modal-close btn btn-danger" id="add-aluno" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">Deletar Disciplina(a)</h5>
+                <button type="button" class="modal-close btn btn-danger" id="add-disciplina" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="delete-aluno-form">
-                <input type="hidden" id="id_aluno_delete" name="id_aluno_delete">
+            <form id="delete-disciplina-form">
+                <input type="hidden" id="id_disciplina_delete" name="id_disciplina_delete">
                 <div class="modal-body">
                     <div class="form-messages d-flex flex-column gap-1 px-3 pt-3 ">
                         <div class="alert alert-danger" role="alert">
-                            Deseja realmente deletar o aluno "<span class="aluno_nome" id="aluno_nome">Sandro Filho </span> <span class="aluno_matricula" id="aluno_matricula"> (MATR001)</span>"?
+                            Deseja realmente deletar o disciplina "<span class="disciplina_nome" id="disciplina_nome">Sandro Filho </span> <span class="disciplina_matricula" id="disciplina_matricula"> (MATR001)</span>"?
                         </div>
                     </div>
                 </div>
@@ -53,16 +52,16 @@
         </div>
     </div>
     
-    <div class="modal add-aluno-modal" tabindex="-1" role="dialog">
+    <div class="modal add-disciplina-modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Adicionar Aluno(a)</h5>
-                <button type="button" class="modal-close btn btn-danger" id="add-aluno" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title">Adicionar Disciplina(a)</h5>
+                <button type="button" class="modal-close btn btn-danger" id="add-disciplina" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form id="add-aluno-form">
+            <form id="add-disciplina-form">
                 <div class="form-messages d-flex flex-column gap-1 px-3 pt-3 ">
 
                 </div>
@@ -84,4 +83,6 @@
     <div class="spinner-border text-primary" role="status">
     </div>
 </div>
-<script src="<?= base_url(relativePath: 'assets/js/alunos.js'); ?>"></script>
+
+
+<script src="<?= base_url(relativePath: 'assets/js/disciplinas.js'); ?>"></script>
