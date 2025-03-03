@@ -71,4 +71,26 @@ class Alunos extends BaseController
                     ->setContentType('application/json')
                     ->setJSON(['maxId' => $max_id, 'matricula' => $matricula, 'nome' => $nome]);
     }
+    public function deleteAluno($id = null)
+    {
+        if (!$id) {
+            return $this->response
+                        ->setStatusCode(400)
+                        ->setContentType('application/json')
+                        ->setJSON(['error' => 'ID do aluno é obrigatório']);
+        }
+    
+        $alunoModel = new Aluno_model();
+        if ($alunoModel->delete($id)) {
+            return $this->response
+                        ->setStatusCode(200)
+                        ->setContentType('application/json')
+                        ->setJSON(['message' => 'Aluno deletado com sucesso!']);
+        }
+    
+        return $this->response
+                    ->setStatusCode(500)
+                    ->setContentType('application/json')
+                    ->setJSON(['error' => 'Erro ao deletar aluno']);
+    }
 }

@@ -22,7 +22,7 @@
   width: 100% !important;
 }
 
-#overlay{
+#overlay, #overlay_loading{
   display: none;
   position: fixed;
   background: #000000c2;
@@ -32,4 +32,22 @@
   z-index: 10;
   top: 0;
   left: 0;
+}
+
+#overlay_loading{
+  background: #ffffffc2;
+}
+
+/* #overlay_loading *{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+
+body.loading input[type=submit]{
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
 }

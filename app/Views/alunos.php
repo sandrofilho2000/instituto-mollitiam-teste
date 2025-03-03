@@ -30,17 +30,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deletar Aluno</h5>
+                <h5 class="modal-title">Deletar Aluno(a)</h5>
                 <button type="button" class="modal-close btn btn-danger" id="add-aluno" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form id="delete-aluno-form">
-                <input type="hidden" id="id_aluno" name="aluno_id">
+                <input type="hidden" id="id_aluno_delete" name="id_aluno_delete">
                 <div class="modal-body">
-                <div class="alert alert-danger" role="alert">
-                    Deseja realmente deletar o aluno "<span class="aluno_nome" id="aluno_nome">Sandro Filho </span> <span class="aluno_matricula" id="aluno_matricula"> (MATR001)</span>"?
-                </div>
+                    <div class="form-messages d-flex flex-column gap-1 px-3 pt-3 ">
+                        <div class="alert alert-danger" role="alert">
+                            Deseja realmente deletar o aluno "<span class="aluno_nome" id="aluno_nome">Sandro Filho </span> <span class="aluno_matricula" id="aluno_matricula"> (MATR001)</span>"?
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-danger" value="Deletar">
@@ -55,7 +57,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Adicionar Aluno</h5>
+                <h5 class="modal-title">Adicionar Aluno(a)</h5>
                 <button type="button" class="modal-close btn btn-danger" id="add-aluno" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -74,5 +76,11 @@
                 </div>
             </form>
         </div>
+    </div>
+</div>
+
+
+<div class="overlay_loading d-flex align-items-center justify-content-center" id="overlay_loading">
+    <div class="spinner-border text-primary" role="status">
     </div>
 </div>

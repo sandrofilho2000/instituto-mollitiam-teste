@@ -1,4 +1,6 @@
 async function addAluno(nome) { 
+    $("body").addClass("loading")
+
     try {
         const data = await $.ajax({
             url: '/alunos/addAluno',
@@ -36,6 +38,42 @@ async function addAluno(nome) {
         console.error("Erro ao carregar os alunos", error);
         // Caso haja um erro na requisição, você pode exibir uma mensagem geral
         $(".form-errors").html('<span class="badge bg-danger">Erro ao processar a requisição. Tente novamente mais tarde.</span>');
+        $("body").removeClass("loading")
+        return null;
+    }
+}
+
+async function deleteAluno() { 
+    const id = $("#id_aluno_delete").val();
+    $("body").addClass("loading")
+
+    if (!id) {
+        console.error("ID do aluno não informado.");
+        return;
+    }
+
+    try {
+        const data = await $.ajax({
+            url: `/alunos/deleteAluno/${id}`, // Passando o ID na URL
+            method: 'DELETE',
+            dataType: 'json',
+            statusCode: {
+                400: function (response) {
+                    $(".form-messages").html(`<div class="alert alert-danger">${response.error || "Erro desconhecido"}</div>`);
+                },
+                200: function () {
+                    console.log("sucesso: ")
+                    $(".form-messages").html(`<div class="alert alert-success">Aluno(a) deletado com sucesso!</div>`);
+                    setTimeout(() => location.href = '/alunos', 3000);
+                }
+            }
+        });
+
+        return data;
+    } catch (error) {
+        console.error("Erro ao processar a requisição", error);
+        $(".form-errors").html('<span class="badge bg-danger">Erro ao processar a requisição.</span>');
+        $("body").removeClass("loading")
         return null;
     }
 }
@@ -44,13 +82,14 @@ async function showDeleteAlunoPopUp(e) {
     const id = e.target.closest("tr").querySelector("td.td-id").innerText
     const nome = e.target.closest("tr").querySelector("td.td-nome").innerText
     const matricula = e.target.closest("tr").querySelector("td.td-matricula").innerText
-    $("#delete-aluno-form #id_aluno").val(id)
+    $("#delete-aluno-form #id_aluno_delete").val(id)
     $("#delete-aluno-form #aluno_nome").text(nome); 
     $("#delete-aluno-form #aluno_matricula").text(`(${matricula})`); 
     $("#overlay, #overlay .delete-aluno-modal").show();
 }
 
 $(document).ready(function() {
+    $("#overlay_loading").addClass("d-flex")
     $.ajax({
         url: '/alunos/getAlunos', 
         method: 'GET',
@@ -100,11 +139,14 @@ $(document).ready(function() {
                 ]
             });
             
+            $("#overlay_loading").removeClass("d-flex").addClass("d-none")
         },            
         error: function() {
             alert('Erro ao carregar os alunos');
+            $("#overlay_loading").removeClass("d-flex").addClass("d-none")
         }
     });
+
 
     $("#add-aluno").click(function(){
         $("#overlay, #overlay .add-aluno-modal").show()
@@ -137,6 +179,11 @@ $(document).ready(function() {
         } else {
             alert("Nome não pode ser vazio.");
         }
+    });
+
+    $("#delete-aluno-form").submit(async function (e) {
+        e.preventDefault();
+        await deleteAluno();
     });
         
 });

@@ -8,4 +8,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Alunos::index');
 $routes->get('alunos/getAlunos', 'Alunos::getAlunos');
 $routes->post('alunos/addAluno', 'Alunos::addAluno');
+$routes->delete('alunos/deleteAluno/(:num)', 'Alunos::deleteAluno/$1');
 $routes->add('(:any)', 'DynamicController::index/$1');
