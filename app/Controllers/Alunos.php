@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Aluno_model;
+use App\Models\Disciplina_model;
 
 class Alunos extends BaseController
 {
@@ -11,6 +12,13 @@ class Alunos extends BaseController
 
         $alunoModel = new Aluno_model();
         $data['alunos'] = $alunoModel->get_all();
+
+        $disciplinasModel = new Disciplina_model();
+        $data['disciplinas'] = $disciplinasModel->get_all();
+
+        usort($data['disciplinas'], function($a, $b) {
+            return strcmp($a['nome'], $b['nome']);
+        });
         
         echo view('templates/header'); 
         echo view('alunos', $data); 
@@ -21,8 +29,8 @@ class Alunos extends BaseController
     public function getAlunos()
     {
         $alunoModel = new Aluno_model();
-        $alunos = $alunoModel->findAll();
-    
+        $alunos = $alunoModel->get_all_custom();
+
         // Retorna JSON corretamente
         return $this->response
                     ->setStatusCode(200)
@@ -71,6 +79,7 @@ class Alunos extends BaseController
                     ->setContentType('application/json')
                     ->setJSON(['maxId' => $max_id, 'matricula' => $matricula, 'nome' => $nome]);
     }
+
     public function deleteAluno($id = null)
     {
         if (!$id) {

@@ -27,9 +27,7 @@ async function addDisciplina(nome) {
                     $(".form-messages").html(`<div class="alert alert-success" role="alert">
                                                    Disciplina adicionada com sucesso!
                                                 </div>`);
-                    setTimeout(() => {
-                        location.href = '/disciplinas'; // Redirecionamento, por exemplo
-                    }, 3000);
+                    location.href = '/disciplinas'; 
                 }
             }
         });
@@ -64,7 +62,7 @@ async function deleteDisciplina() {
                 200: function () {
                     console.log("sucesso: ")
                     $(".form-messages").html(`<div class="alert alert-success">Disciplina(a) deletada com sucesso!</div>`);
-                    setTimeout(() => location.href = '/disciplinas', 3000);
+                    location.href = '/disciplinas', 3000;
                 }
             }
         });
@@ -93,6 +91,7 @@ $(document).ready(function() {
         method: 'GET',
         dataType: 'json',
         success: function(data) {
+            console.log("🚀 ~ $ ~ data:", data)
             let disciplinas = data;
             $('#tb-lista').DataTable({
                 responsive: true,

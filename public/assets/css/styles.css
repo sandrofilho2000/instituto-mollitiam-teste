@@ -55,3 +55,27 @@ body.loading input[type=submit]{
 ul li{
   list-style-type: none;
 }
+
+tr td-value{
+  display: initial;
+}
+
+tr td-input{
+  display: none;
+}
+
+tr .td-value{
+  display: initial !important;
+}
+
+tr .td-input{
+  display: none !important;
+}
+
+tr.edit .td-value{
+  display: none !important;
+}
+
+tr.edit .td-input{
+  display: initial !important;
+}

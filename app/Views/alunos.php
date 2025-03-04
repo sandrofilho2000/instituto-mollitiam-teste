@@ -13,6 +13,13 @@
                     <th>Id</th>
                     <th>Aluno</th>
                     <th>Matrícula</th>
+                    <?php 
+
+                    foreach($disciplinas as $disciplina){
+                        echo "<th>".$disciplina['nome']."</th>";
+                    }
+                    
+                    ?>
                     <th class="text-end">
                         Ações
                     </th>

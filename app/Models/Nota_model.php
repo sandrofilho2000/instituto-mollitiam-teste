@@ -1,38 +1,51 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+namespace App\Models;
 
-class Nota_model extends CI_Model {
+use CodeIgniter\Model;
 
-    // Nome da tabela
+class Nota_model extends Model
+{
     protected $table = 'notas';
+    protected $primaryKey = 'id';
+    protected $allowedFields = ['id', 'aluno_id', 'disciplina_id', 'nota'];
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
-
     // Função para obter todas as notas
     public function get_all() {
         return $this->db->get($this->table)->result();
     }
 
-    // Função para obter notas de um aluno específico
-    public function get_by_aluno($aluno_id) {
-        return $this->db->get_where($this->table, ['aluno_id' => $aluno_id])->result();
+    public function get_id($aluno_id, $disciplina_id)
+    {
+        $nota = $this->where('aluno_id', $aluno_id)
+                    ->where('disciplina_id', $disciplina_id)
+                    ->select('id')
+                    ->first();
+
+        return $nota? $nota['id'] : null;
     }
 
-    // Função para inserir uma nova nota
-    public function insert($data) {
-        return $this->db->insert($this->table, $data);
+    public function get_by_id($id)
+    {
+        return $this->find($id); 
     }
 
-    // Função para atualizar dados de uma nota
-    public function update($id, $data) {
-        return $this->db->update($this->table, $data, ['id' => $id]);
+    public function insert_data($data)
+    {
+        return $this->insert($data); 
     }
 
-    // Função para excluir uma nota
-    public function delete($id) {
-        return $this->db->delete($this->table, ['id' => $id]);
+    public function update_data($id, $data)
+    {
+        return $this->update($id, $data);
+    }
+
+    public function delete_data($id)
+    {
+        return $this->delete($id); 
     }
 }
 ?>

@@ -29,7 +29,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Deletar Disciplina(a)</h5>
+                <h5 class="modal-title">Deletar Disciplina</h5>
                 <button type="button" class="modal-close btn btn-danger" id="add-disciplina" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -56,7 +56,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Adicionar Disciplina(a)</h5>
+                <h5 class="modal-title">Adicionar Disciplina</h5>
                 <button type="button" class="modal-close btn btn-danger" id="add-disciplina" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

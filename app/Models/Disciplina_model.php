@@ -8,9 +8,8 @@ class Disciplina_Model extends Model
 {
     protected $table = 'disciplinas';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nome']; // 'id' não é necessário aqui
+    protected $allowedFields = ['id','nome']; // 'id' não é necessário aqui
 
-    // Função para obter todas as disciplinas
     public function get_all()
     {
         return $this->findAll(); 
