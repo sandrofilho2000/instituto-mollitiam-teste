@@ -39,7 +39,7 @@
                 <div class="modal-body">
                     <div class="form-messages d-flex flex-column gap-1 px-3 pt-3 ">
                         <div class="alert alert-danger" role="alert">
-                            Deseja realmente deletar o disciplina "<span class="disciplina_nome" id="disciplina_nome">Sandro Filho </span> <span class="disciplina_matricula" id="disciplina_matricula"> (MATR001)</span>"?
+                            Deseja realmente deletar a disciplina "<span class="disciplina_nome" id="disciplina_nome">Sandro Filho </span>"?
                         </div>
                     </div>
                 </div>

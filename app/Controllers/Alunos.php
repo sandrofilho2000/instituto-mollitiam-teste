@@ -29,7 +29,7 @@ class Alunos extends BaseController
     public function getAlunos()
     {
         $alunoModel = new Aluno_model();
-        $alunos = $alunoModel->get_all_custom();
+        $alunos = $alunoModel->get_all_with_notas();
 
         // Retorna JSON corretamente
         return $this->response

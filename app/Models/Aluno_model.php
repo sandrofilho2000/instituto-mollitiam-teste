@@ -20,7 +20,6 @@ class Aluno_model extends Model
     }
     private function slugify($string)
     {
-        // Tabela de substituição de caracteres acentuados
         $map = [
             'á' => 'a', 'à' => 'a', 'â' => 'a', 'ã' => 'a', 'ä' => 'a',
             'é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e',
@@ -38,43 +37,31 @@ class Aluno_model extends Model
             'Ñ' => 'N'
         ];
     
-        // Substitui os caracteres acentuados
         $string = strtr($string, $map);
-    
-        // Converte para minúsculas
         $string = mb_strtolower($string, 'UTF-8');
-    
-        // Substitui espaços e caracteres não alfanuméricos por hífens
         $string = preg_replace('/[^a-z0-9]+/', '-', $string);
-    
-        // Remove hífens no início e no final
         $string = trim($string, '-');
     
         return $string;
     }
 
-    public function get_all_custom()
+    public function get_all_with_notas()
     {
-        // Consulta para obter as disciplinas
         $disciplinas = $this->db->query("SELECT id, nome FROM disciplinas")->getResultArray();
 
-        // Iniciar a construção da query SQL
         $selectColumns = [
             'a.id AS id',
             'a.nome AS aluno',
             'a.matricula AS matricula'
         ];
 
-        // Verifica se há disciplinas
         if (!empty($disciplinas)) {
-            // Adicionar colunas dinâmicas para cada disciplina
             foreach ($disciplinas as $disciplina) {
                 $nomeDisciplina = $disciplina['nome'];
                 $alias = $this->slugify($nomeDisciplina);
                 $selectColumns[] = "COALESCE(MAX(CASE WHEN d.nome = '$nomeDisciplina' THEN n.nota END), NULL) AS \"$alias\"";
             }
 
-            // Montar a query SQL com LEFT JOIN
             $sql = "SELECT " . implode(", ", $selectColumns) . "
                     FROM alunos a
                     LEFT JOIN disciplinas d ON 1=1
@@ -85,7 +72,6 @@ class Aluno_model extends Model
                     FROM alunos a;";
         }
 
-        // Executar a query
         $query = $this->db->query($sql);
         $result = $query->getResultArray();
 

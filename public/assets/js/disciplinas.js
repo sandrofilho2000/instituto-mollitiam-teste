@@ -16,7 +16,7 @@ async function addDisciplina(nome) {
                                                     ${item}
                                                 </div>`;
                         });
-                        $(".form-messages").html(errors_html); // Exibe os erros no local adequado
+                        $(".form-messages").html(errors_html);
                     } else {
                         $(".form-messages").html(`<div class="alert alert-danger" role="alert">
                                                     Erro desconhecido
@@ -34,7 +34,6 @@ async function addDisciplina(nome) {
         return data;
     } catch (error) {
         console.error("Erro ao carregar os disciplinas", error);
-        // Caso haja um erro na requisição, você pode exibir uma mensagem geral
         $(".form-errors").html('<span class="badge bg-danger">Erro ao processar a requisição. Tente novamente mais tarde.</span>');
         $("body").removeClass("loading")
         return null;
@@ -52,7 +51,7 @@ async function deleteDisciplina() {
 
     try {
         const data = await $.ajax({
-            url: `/disciplinas/deleteDisciplina/${id}`, // Passando o ID na URL
+            url: `/disciplinas/deleteDisciplina/${id}`, 
             method: 'DELETE',
             dataType: 'json',
             statusCode: {
@@ -61,7 +60,7 @@ async function deleteDisciplina() {
                 },
                 200: function () {
                     console.log("sucesso: ")
-                    $(".form-messages").html(`<div class="alert alert-success">Disciplina(a) deletada com sucesso!</div>`);
+                    $(".form-messages").html(`<div class="alert alert-success">Disciplina deletada com sucesso!</div>`);
                     location.href = '/disciplinas', 3000;
                 }
             }
@@ -98,9 +97,9 @@ $(document).ready(function() {
                 pageLength: 10,
                 searching: true,
                 lengthChange: false,
-                autoWidth: false, // Manter como false para evitar largura fixa
-                fixedHeader: true, // Ajusta automaticamente quando rolar
-                scrollX: true, // Habilita rolagem horizontal se necessário
+                autoWidth: false, 
+                fixedHeader: true,
+                scrollX: true, 
                 language: { 
                     url: 'https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese.json' 
                 },
@@ -126,7 +125,7 @@ $(document).ready(function() {
                     }}
                 ],
                 columnDefs: [
-                    { targets: '_all', width: 'auto' } // Faz com que todas as colunas tenham largura automática
+                    { targets: '_all', width: 'auto' }
                 ]
             });
             

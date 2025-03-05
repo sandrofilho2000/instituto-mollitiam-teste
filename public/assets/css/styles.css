@@ -79,3 +79,16 @@ tr.edit .td-value{
 tr.edit .td-input{
   display: initial !important;
 }
+
+@media (max-width: 420px){
+  .navbar div {
+    flex-direction: column;
+  }
+  .navbar div > a{
+    margin: 0 auto;
+  }
+  .navbar div > ul{
+    margin: 0 auto;
+    padding: 0px;
+  }
+}
